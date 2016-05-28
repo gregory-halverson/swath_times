@@ -1,6 +1,8 @@
 import os
 from glob import glob
 
+import gdal
+
 base_path = '/nobackup0/omega/halverso/evapotranspiration_data/sources/MOD07_L2'
 
 date_list = glob(os.path.join(base_path, '*'))
@@ -18,4 +20,8 @@ for directory in date_list:
     for filename in swath_list:
         filename_base = os.path.basename(filename)
         swath_name = filename_base.split('.')[2]
-        print(swath_name)
+
+        ds = gdal.Open(filename)
+        flag = ds.GetMetadata()['DAYNIGHTFLAG']
+
+        print(swath_name, flag)
