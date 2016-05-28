@@ -17,5 +17,5 @@ for directory in date_list:
 
     for filename in swath_list:
         filename_base = os.path.basename(filename)
-        swath_name = filename.split('.')[2]
+        swath_name = filename_base.split('.')[2]
         print(swath_name)
