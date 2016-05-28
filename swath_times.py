@@ -16,4 +16,5 @@ for directory in date_list:
     swath_list.sort()
 
     for filename in swath_list:
-        print(filename)
+        filename_base = os.path.basename(filename)
+        print(filename_base)
